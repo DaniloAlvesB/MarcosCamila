@@ -141,7 +141,11 @@
             var nametext = ''
             names.forEach((el, index) => {
                 if(index == names.length - 1){
-                    nametext += ' e ' + el
+                    if(names.length > 1){
+                        nametext += ' e ' + el
+                    }else{
+                        nametext += el
+                    }
                 }else{
                     nametext += el
                     if(index < names.length - 2){
