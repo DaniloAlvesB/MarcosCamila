@@ -32,7 +32,7 @@
             <div class="d-flex flex-wrap align-items-center justify-content-center esmanhecer-medio">
                 <div class="col-12 col-md-5 d-flex flex-column py-4">
                     <div>Roberto Braz  de Brito </div>
-                    <div>Alessandra fazan lopes bataglioti</div>
+                    <div>Alessandra Fazan Lopes Bataglioti</div>
                 </div>
                 <div class="col-12 col-md-5 d-flex flex-column py-4">
                     <div>Carlito Alves Pereira</div>
@@ -44,9 +44,21 @@
                 Marcos e Camila
             </h1>
 
+            <div id="geralMessageDiv" class="pb-4 d-flex justify-content-center esmanhecer-lento flex-column align-items-center">
+
+                <div id="persMessage" class="olive-border"></div> 
+                <div class="d-flex justify-content-end">~Marcos e Camila</div>
+
+            </div>
+
             <h5 class="esmanhecer">
                 Convidam para seu casamento
             </h5>
+
+            <div id="geralNameDiv" class='py-4'>
+                <div id="persNames"></div> 
+                <img src="./imagens/folhas.png" width="250px" style="margin-top: -5px;">
+            </div>
 
             <h2 class="esmanhecer-medio">
                 10 de Agosto de 2024 | 19H00
@@ -62,31 +74,10 @@
     </div>
     
     <div id="botão" class="gap-2 d-flex flex-row justify-content-center esmanhecer-lento py-4">
-        <button id="btnInfo" class="btn-outline-olive"  data-bs-toggle="modal" data-bs-target="#modalInfo">
-            Mais informações
-        </button>
         <button id="btnConfirm" class="btn-olive" onclick="confirm()">
             Confirmar presença
         </button>
     </div>
-        
-        <!-- Modal -->
-        <div class="modal fade" id="modalInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Mais informações</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        Aqui serão exibidas as informações que desejar
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn-olive" data-bs-dismiss="modal">Entendi!</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
     <div class="d-flex align-items-center justify-content-center">
         <img src="./imagens/folhas.png" width="80%" alt="folhas">
@@ -96,24 +87,75 @@
 
 <script>
 
-var btn = document.getElementById('btnConfirm')
-btn.addEventListener('mouseenter', function(e) {
-    btn.innerText = "Eu vou!"
-})
-btn.addEventListener('mouseleave', function(e) {
-    btn.innerText = "Confirmar presença"
-})
+    var btn = document.getElementById('btnConfirm')
+    btn.addEventListener('mouseenter', function(e) {
+        btn.innerText = "Eu vou!"
+    })
+    btn.addEventListener('mouseleave', function(e) {
+        btn.innerText = "Confirmar presença"
+    })
 
-function confirm(){
-    window.location.href = 'https://wa.me/5516999756043?text=Oii.%20Estou%20confirmando%20minha%20presen%C3%A7a%20para%20o%20casamento!'
-}
-
-setTimeout(() => {
-    var b = document.getElementsByTagName('div')
-    if(b.id != "botão"){
-        b[b.length-1].innerText = ''
+    function confirm(){
+        window.location.href = 'https://wa.me/5516999756043?text=Oii.%20Estou%20confirmando%20minha%20presen%C3%A7a%20para%20o%20casamento!'
     }
-}, 150)
+
+    //Padrinhos
+    var message = ''
+    function loadMessage(){
+        var search = window.location.search
+        search = search.split('&')
+        search.forEach(element => {
+            if(element.includes('message')){
+                message = element.replace('message=', '')
+                message = message.replace('&', '')
+                message = message.replace('?', '')
+                message = window.decodeURI(message)
+            }
+        })
+
+        if(message.length > 0){
+            document.getElementById('persMessage').innerText = '"' + message + '"'
+        }else{
+            document.getElementById('geralMessageDiv').remove()
+        }
+    }
+    loadMessage()
+
+    var names = []
+    function loadNames(){
+        var search = window.location.search
+        search = search.split('&')
+        search.forEach(element => {
+            var el = ''
+            if(element.includes('name')){
+                el = element.split('=')[1]
+                el = el.replace('&', '')
+                el = el.replace('?', '')
+                el = window.decodeURI(el)
+                if(el.length > 0){
+                    names.push(el)
+                }
+            }
+        })
+        if(names.length > 0){
+            var nametext = ''
+            names.forEach((el, index) => {
+                if(index == names.length - 1){
+                    nametext += ' e ' + el
+                }else{
+                    nametext += el
+                    if(index < names.length - 2){
+                        nametext += ', '
+                    }
+                }
+            })
+            document.getElementById('persNames').innerText = nametext
+        }else{
+            document.getElementById('geralNameDiv').remove()
+        }
+        
+    }
+    loadNames()
 
 </script>
 

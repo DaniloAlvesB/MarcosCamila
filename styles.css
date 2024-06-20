@@ -52,13 +52,32 @@
     font-family: "Parisienne", cursive;
     font-weight: 400;
     font-style: normal;
-  }
+}
+
+.olive-border {
+    border: 1px solid #414B33;
+    padding: 10px;
+    border-radius: 8px;
+    width: fit-content;
+}
+
+.pers {
+    background-color: #414B33;
+    color: white;
+}
   
-#nomes {
+#nomes{
     font-family: "Parisienne", cursive;
     font-weight: 400;
     font-style: normal;
     font-size: 500%;
+}
+
+#persNames {
+    font-family: "Parisienne", cursive;
+    font-weight: 550;
+    font-style: normal;
+    font-size: 250%;
 }
 
 @media screen and (max-width: 768px) {
