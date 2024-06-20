@@ -1,0 +1,103 @@
+* {
+    color: #414B33;
+}
+
+#header {
+    height: 70px;
+}
+
+.box-1 {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.bg-olive {
+    background-color: rgba(146, 165, 75, 0.87);
+}
+
+.bg-olive-2 {
+    background-color: rgba(146, 165, 75, 0.05);
+}
+
+.btn-olive {
+    border: 0px solid transparent;
+    border-radius: 7px;
+    padding: 10px;
+    padding-inline: 15px;
+    background-color: #414B33;
+    color: white;
+    transition: .25s;
+    width: 170px;
+}
+.btn-olive:hover {
+    background-color: #5e6b4c;
+    content: "Eu vou!";
+}
+
+.btn-outline-olive{
+    border: 1px solid #414B33;
+    border-radius: 7px;
+    padding: 10px;
+    padding-inline: 15px;
+    background-color: #ececec00;
+    color: 5e6b4c;
+    transition: .25s;
+    width: 170px;
+}
+.btn-outline-olive:hover {
+    background-color: #5e6b4c79;
+    content: "Eu vou!";
+}
+
+.parisienne-regular {
+    font-family: "Parisienne", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+#nomes {
+    font-family: "Parisienne", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 500%;
+}
+
+@media screen and (max-width: 768px) {
+    #nomes {
+        font-family: "Parisienne", cursive;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 300%;
+    }
+}
+
+@keyframes esmanhecer {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes esmanhecer-lento {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.esmanhecer{
+    animation: esmanhecer 1s;
+}
+
+.esmanhecer-medio{
+    animation: esmanhecer-lento 2s;
+}
+
+.esmanhecer-lento{
+    animation: esmanhecer-lento 4s;
+}
