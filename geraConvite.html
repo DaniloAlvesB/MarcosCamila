@@ -81,7 +81,7 @@
         var actLink = window.location.href
         var novoLink = actLink.replace('geraConvite', 'index')
         if(nameQuery.length > 0 || messageQuery.length > 0){
-            var novoLink = actLink.replace('geraConvite', 'index') + '?' + nameQuery + messageQuery
+            var novoLink = actLink.replace('geraConvite', 'index') + '?' + window.encodeURI(nameQuery) + window.encodeURI(messageQuery)
         }
 
         link.value = novoLink
